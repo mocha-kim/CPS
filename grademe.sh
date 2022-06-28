@@ -15,11 +15,11 @@ do
 	time=${SECONDS}
 	echo -n "Test ${i}: "
 	if [ -z "${value}" ]; then
-		echo -e "\033[32;40mok\033[0m"
+		echo -e "\033[32mok\033[0m"
 	elif [ ${time} -ge 1 ]; then
-		echo -e "\033[33;40mtimeout\033[0m"
+		echo -e "\033[33mtimeout\033[0m"
 	else
-		echo -e "\033[31;40mfail\033[0m"
+		echo -e "\033[31mfail\033[0m"
 	fi
 done
 
