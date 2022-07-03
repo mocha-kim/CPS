@@ -8,8 +8,7 @@ int main()
 	int n;
 	cin >> n;
 
-	int help, count = 0;
-
+	int count = 0;
 	string num_str = to_string(n);
 	int cur, left, right;
 	int k = 1;
