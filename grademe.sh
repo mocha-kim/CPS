@@ -9,6 +9,10 @@ for i in 1 2 3 4 5
 do
 	path=../CPS\(채점폴더\)/`ls ../CPS\(채점폴더\) | grep "^$1[.+]"`
 	SECONDS=0
+	if [ ! -e ${path}/in${i}.txt ]; then
+		echo "Error: There is no grading file"
+		exit 0
+	fi
 	./a.out < "${path}/in${i}.txt" > out
 	value=`diff out "${path}/out${i}.txt"`
 	rm out
