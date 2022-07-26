@@ -26,20 +26,23 @@ int main()
 	int n, m;
 	cin >> n >> m;
 
-	int total = 0;
+	int longest = -1, total = 0;
 	vector<int> songs(n);
 	for (int i = 0; i < n; i++)
 	{
 		cin >> songs[i];
 		total += songs[i];
+		if (longest < songs[i])
+			longest = songs[i];
 	}
 
-	int count, min, cur, left = 1, right = total;
+	int count, min, cur;
+	int left = 1, right = total;
 	while (left <= right)
 	{
 		cur = (right + left) / 2;
 		count = count_dvd(n, m, songs, cur);
-		if (count <= m)
+		if (longest <= cur && count <= m)
 		{
 			min = cur;
 			right = cur - 1;
