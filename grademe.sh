@@ -7,14 +7,15 @@ fi
 
 for i in 1 2 3 4 5
 do
-	path=../CPS\(채점폴더\)/`ls ../CPS\(채점폴더\) | grep "^$1[.+]"`
+	read folderpath < ./.conf
+	filepath=${folderpath}/`ls "${folderpath}" | grep "^$1[.+]"`
 	SECONDS=0
-	if [[ ! -e ${path}/in${i}.txt ]]; then
+	if [[ ! -e ${filepath}/in${i}.txt ]]; then
 		echo "Error: There is no grading file"
 		exit 0
 	fi
-	./a.out < "${path}/in${i}.txt" > out
-	value=`diff out "${path}/out${i}.txt"`
+	./a.out < "${filepath}/in${i}.txt" > out
+	value=`diff out "${filepath}/out${i}.txt"`
 	rm out
 	time=${SECONDS}
 	echo -n "Test ${i}: "
